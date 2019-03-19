@@ -14,19 +14,19 @@
       become: true
       #become_user: ubuntu
 
-    - name: download war from cloud
-      get_url: url=https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war dest=/tmp/sample.war
-      become: true
+    #- name: download war from cloud
+     # get_url: url=https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war dest=/tmp/sample.war
+      #become: true
       #become_user: ubuntu
 
     - name: changemode 777 for war file
-      file: path=/tmp/sample.war mode=0777
+      file: path=/home/ubuntu/warfiles/webapp.war mode=0777
       become: true
       #become_user: ubuntu
 
     - name: copy the war
       #shell: cp /tmp/sample.war /var/lib/tomcat8/webapps/sample.war
-      copy: src=/tmp/sample.war dest=/var/lib/tomcat8/webapps/sample.war
+      copy: src=/home/ubuntu/warfiles/webapp.war dest=/var/lib/tomcat8/webapps/webapp.war
       become: true
       #become_user: ubuntu
       notify: tomcat8 starting
